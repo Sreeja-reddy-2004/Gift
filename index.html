@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Password</title>
+    <link rel="stylesheet" href="Gift_css.css">
+    
+</head>
+<body>
+    <div>
+        <input type="password" class="gift__password-input" id="passwordInput" placeholder="Enter password">
+        
+        <button class="gift__password-toggle" onclick="togglePasswordVisibility()">Show</button>
+        <div>
+            <button class="gift__hint-button" onclick="cycleHints()">Get Hint</button>
+            <button class="gift__hint-submit" onclick="checkPassword()">Submit</button>
+        </div>
+        <div class="gift__hints" id="hintDisplay"></div>
+    </div>
+        
+    <div class="gift">
+        <div class="gift__bow">
+            <div class="gift__bow-left"></div>
+            <div class="gift__bow-right"></div>
+            <div class="gift__bow-center"></div>
+        </div>
+        <div class="gift__box">
+            <div class="gift__lid-shadow"></div>
+        </div>
+        <div class="gift__lid"></div>
+        <div class="gift__star gift__star--1"></div>
+        <div class="gift__star gift__star--2"></div>
+        <div class="gift__star gift__star--3"></div>
+        <div class="gift__star gift__star--4"></div>
+        <div class="gift__star gift__star--5"></div>
+    </div>
+
+    <script>
+        var hints = [
+            "Hint 1: 🌟 Enchanting initials shared between us, the poetic start of 'You and I.'",
+            "Hint 2: 📅 A moment etched in time, a date special to both, a chapter in our shared story.",
+            "Hint 3: 💬 A term tenderly whispered, a phrase that dances in our conversations like a gentle melody.",
+            "Hint 4: 🏆 The triumphant second letter of the name that always emerges victorious in our shared battles.",
+            "Hint 5: 🌍 The sacred ground where our souls first embraced, a place that resonates with the melody of our initial letters(three).",
+            "Hint 6: 🔍 A shortcut word, a code between us, a question asked with every beat of our hearts."
+        ];
+
+        var correctPassword = "SU19haaclibvc";
+        var hintIndex = 0;
+
+        function cycleHints() {
+            var hintDisplay = document.getElementById("hintDisplay");
+            hintDisplay.textContent = hints[hintIndex];
+            hintIndex = (hintIndex + 1) % hints.length;
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        }
+
+        function checkPassword() {
+            var enteredPassword = document.getElementById("passwordInput").value;
+            if (enteredPassword === correctPassword) {
+                // Redirect to the next page or perform other actions
+                window.location.href = "image_slider.html"; // Replace with the actual URL of the next page
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
